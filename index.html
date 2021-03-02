@@ -41,10 +41,6 @@ var gainNode;
 var i;
 
 var sayings=["YHDNRGNMF","aware","entiregenerationoflesbians","feministmentor","newguard","oldguard","onefouronefour","onpage73","pointoforder","saga","shutupandsitdown","wherewereyou"];
-var filenames=new Array(sayings.length);
-for(i=0;i<sayings.length;i++) {
-		filenames[i]=sayings[i]+".mp3";
-}
 var Buffers = null;
 
 var pitch = 1.0;
@@ -58,21 +54,20 @@ function sleep(ms) {
 }
 
 async function init() {
-	try {
+    try {
 		// Fix up for prefixing
 		window.AudioContext = window.AudioContext || window.webkitAudioContext;
 		context = new AudioContext();
 		gainNode = context.createGain();
 		gainNode.connect(context.destination);
-	} catch (e) {
+    } catch (e) {
 		alert('Web Audio API is not supported in this browser');
-	}
+    }
 
-	Buffers=new Array(filenames.length);
-	var i;
-    for(i=0;i<filenames.length;i++)
+    Buffers=new Array(sayings.length);
+    var i;
+    for(i=0;i<sayings.length;i++)
 	{
-		//loadBuffer(filenames[i],i);
         loadBuffer(sayings_b64[i],i);
 	}
 
@@ -100,7 +95,6 @@ async function init() {
 		el.addEventListener("touchmove", handleMove, false);
 		el.addEventListener("touchforcechange", handleForceChange, false);
 	}
-
 }
 
 function loadBuffer(url,index) {
@@ -143,9 +137,9 @@ function handleStart(evt) {
 	
 	if (j!=-1){
 	   unmute2(context);
-       pitch=1.0;
-       playSound(Buffers[j],pitch);
-    }
+           pitch=1.0;
+           playSound(Buffers[j],pitch);
+        }
 
 }
 
@@ -181,7 +175,7 @@ function unmute2(context) {
 			hiddentag.preload = "auto";
 			// 0.01 seconds of silence
 			hiddentag.src = "data:audio/mpeg;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA//////////////////////////////////////////////////////////////////8AAABhTEFNRTMuMTAwA8MAAAAAAAAAABQgJAUHQQAB9AAAAnGMHkkIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//sQxAADgnABGiAAQBCqgCRMAAgEAH///////////////7+n/9FTuQsQH//////2NG0jWUGlio5gLQTOtIoeR2WX////X4s9Atb/JRVCbBUpeRUq//////////////////9RUi0f2jn/+xDECgPCjAEQAABN4AAANIAAAAQVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVQ==";
-			hiddentag.loop = true;
+			hiddentag.loop = false;
 			hiddentag.load();
 		}
 		hiddendiv.children.item(0).play();
@@ -205,12 +199,11 @@ table.maintable td {
 
 </style>
 
-<!--spacer for fiddler-->
-<div style="font-family:Georgia,serif;font-size:4vw;text-align:center">
-&nbsp;<br/>&nbsp;<br/>&nbsp;
+<div style="font-family:Georgia,serif;font-size:4vh;text-align:center">
+&nbsp;<br/>
 </div>
 
-<table id="awaresagapad" class="maintable" style="height: 65vh; width: 84%; position: relative; top: 8%; left: 5%;  font-family: Georgia, serif; font-size: 8vw; text-align: center; color: #ff0000;">
+<table id="awaresagapad" class="maintable" style="height: 60vh; width: 80%; position: relative; top: 8%; left: 10%;  font-family: Georgia, serif; font-size: 8vh; text-align: center; color: #ff0000;">
      <tbody><tr style="height:25%">
         <td id="entiregenerationoflesbians" width="33%">👯‍♀️👯‍♀️</td>
         <td id="YHDNRGNMF" width="34%">麻烦</td>			
@@ -235,7 +228,7 @@ table.maintable td {
 
 <table id="podcast" style="height:5%;width:84%;position:relative;top:1vh;left:8%;">
 	<tbody><tr><td>
-<div style="font-family:Georgia,serif;font-size:3vw;text-align:left;color: #ff0000;">
+<div style="font-family:Georgia,serif;font-size:3vh;text-align:left;color: #ff0000;">
 audio from <a href="https://www.aware.org.sg/saga/">saga podcast</a>
 </div>
 </td></tr>
