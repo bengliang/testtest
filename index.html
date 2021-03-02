@@ -138,7 +138,7 @@ function handleStart(evt) {
 	var i;var j=-1;for(i=0;i<sayings.length;i++){if (sayings[i]==saying) j=i;}
 	
 	if (j!=-1){
-	   //unmute2(context);
+	   unmute2(context);
            pitch=1.0;
            playSound(Buffers[j],pitch);
         }
